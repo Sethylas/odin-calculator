@@ -146,9 +146,3 @@ buttons.forEach(button =>
         
     })
 })
-
-// When num button pressed, display & save num.
-// Operator pressed, clear screen and go down route to operator function.
-// Num2 pressed, then equals.
-// Display return val and set it to numInput1. 
-// IF equals pressed with no precedeing operator value, clear everything
