@@ -1,0 +1,43 @@
+.container {
+    display: flex;
+    background-color: black;
+    width: 393px;
+    height: 320px;
+    padding: 8px;
+    justify-self: center;
+    flex-wrap: wrap;
+
+}
+
+.keys {
+    justify-items: center;
+    align-self: center;
+}
+
+.display {
+    background-color: green;
+    width: 393px;
+    height: 40px;
+    background-color: darkgrey;
+    color: black;
+    font-weight: bold;
+    font-size: 30px;
+    text-align: end;
+    margin-top: 8px;
+}
+
+.container button {
+    width: 95px;
+    height: 60px;
+    font-size: 30px;
+}
+
+.operator {
+    background-color: orange;
+    margin: 0;
+    padding: 0;
+}
+
+.zero {
+    width: 160px;
+}
