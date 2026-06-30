@@ -1,5 +1,6 @@
 let numInput1 = "0";
 let numInput2 = "0";
+let result = 0;
 
 const buttons = document.querySelectorAll("button");
 const display = document.querySelector(".display");
@@ -29,10 +30,15 @@ function divide(num1,num2)
 }
 
 
-function calculation() 
+function operate() 
 {
     if (currentOperation == "/") 
     {
+        if (numInput2 == "0") 
+        {
+            return "Cannot divide by zero";
+        }
+
         return divide(numInput1, numInput2);
     }
 
@@ -62,7 +68,7 @@ buttons.forEach(button =>
 
         if (inputType == "number" && hasOperator == false) 
         {
-            if (numInput1 == "0") 
+            if (numInput1 == "0" || numInput1 == result) 
             {
                 numInput1 = inputChoice;
                 display.textContent = numInput1;
@@ -85,26 +91,36 @@ buttons.forEach(button =>
 
         else if (inputType == "operator") 
         {
-            hasOperator = true;
+            if (hasOperator == true && numInput2 !== "0") 
+            {
+                result = operate()
+                display.textContent = result;
+                numInput1 = res;
+                numInput2 = "0";
+            }
+
 
             if (inputChoice == "/") 
             {
                 currentOperation = "/";
+                hasOperator = true;
             }
             else if (inputChoice == "x") 
             {
                 currentOperation = "x";
+                hasOperator = true;
             }
             else if (inputChoice == "-") 
             {
                 currentOperation = "-";
+                hasOperator = true;
             }
             else if (inputChoice == "+") 
             {
                 currentOperation = "+";
+                hasOperator = true;
             }
 
-            display.textContent = "";
         }
 
         else if (inputType == "number" && hasOperator == true) 
@@ -114,7 +130,7 @@ buttons.forEach(button =>
                 numInput2 = inputChoice;
                 display.textContent = numInput2;
             }
-            else 
+            else
             {
                 numInput2 += inputChoice;
                 display.textContent = numInput2;
@@ -125,7 +141,7 @@ buttons.forEach(button =>
         {
             if (hasOperator == true) 
             {
-                let result = calculation();
+                result = operate();
                 display.textContent = result;
                 numInput1 = result;
                 numInput2 = "0";
@@ -142,6 +158,16 @@ buttons.forEach(button =>
 
                 hasOperator = false;
             }
+        }
+
+        // Also calculator
+        else if(inputType == "clear") 
+        {
+            display.textContent = "0";
+            numInput1 = "0";
+            numInput2 = "0";
+
+            hasOperator = false;
         }
         
     })
